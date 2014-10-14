@@ -1,0 +1,13 @@
+[Unit]
+Description=Analytics Server
+Requires=mysqld.service
+After=mysqld.service
+
+[Service]
+Type=simple
+User=analytics
+ExecStart=/opt/analytics/server.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

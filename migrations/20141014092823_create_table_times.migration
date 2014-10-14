@@ -1,0 +1,15 @@
+#-*- coding:utf-8 -*-
+SQL_UP = u"""
+CREATE TABLE times (
+    uid VARCHAR(255) NOT NULL,
+    package VARCHAR(255) NOT NULL,
+    started INT(11) NOT NULL,
+    duration INT(11) DEFAULT NULL,
+    stored INT(11) DEFAULT NULL,
+    PRIMARY KEY (uid, package, started)
+) ENGINE=InnoDB CHARACTER SET=utf8;
+"""
+
+SQL_DOWN = u"""
+DROP TABLE times;
+"""

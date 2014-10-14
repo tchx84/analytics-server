@@ -1,0 +1,16 @@
+[database]
+host: localhost
+port: 3306
+username: analytics
+password: analytics
+database: analytics
+
+[server]
+address: 127.0.0.1
+port: 8887
+certfile: /opt/analytics/etc/analytics.crt
+keyfile: /opt/analytics/etc/analytics.key
+api_key: analytics
+instances: 2
+no_keep_alive: False
+
