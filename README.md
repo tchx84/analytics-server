@@ -27,12 +27,11 @@ Setup
     $chown analytics:analytics server.py
     ```
 
-3. Create the SSL certificates:
+3. Create the SSL certificates (make sure to assign a Common Name):
 
     ```
-    $./misc/generate.sh
-    $mv *.crt.example etc/analytics.crt
-    $mv *.key.example etc/analytics.key
+    $openssl req -newkey rsa:2048 -x509 -days 3650 -nodes -out analytics.crt -keyout analytics.key
+    $mv analytics.key analytics.crt etc/
     ```
 
 4. Create configuration file:
