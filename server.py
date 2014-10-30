@@ -53,7 +53,10 @@ def main():
                         ReportHandler, params_report)])
 
     server = HTTPServer(app,
-                        no_keep_alive=config.get('server', 'no_keep_alive'))
+                        no_keep_alive=config.get('server', 'no_keep_alive'),
+                        ssl_options={
+                            'certfile': config.get('server', 'certfile'),
+                            'keyfile': config.get('server', 'keyfile')})
 
     server.add_sockets(sockets)
     IOLoop.instance().start()
