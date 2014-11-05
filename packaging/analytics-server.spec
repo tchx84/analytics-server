@@ -5,11 +5,15 @@ Summary:        Server for the XoAnalytics Android tool
 
 License:        GPLv2+
 URL:            https://github.com/tchx84/analytics-server
-Source0:        %{name}-%{version}.tar.gz
+Source0:        analytics-server-0.1.0.tar
 
 Requires:       python >= 2.7, python-tornado >= 2.2.1, openssl >= 1.0.1, mysql-server >= 5.5, MySQL-python >= 1.2.3 
 
 BuildArch:      noarch
+
+#GitUrl: https://github.com/tchx84/analytics-server.git
+#GitBranch: master
+#GitCommit: 99e6a82f72741ef3d9cbb4c7cf3644cd27955741
 
 %description
 Server for the XoAnalytics Apps usage tracking tool for Android
@@ -23,7 +27,7 @@ Server for the XoAnalytics Apps usage tracking tool for Android
 rm -rf $RPM_BUILD_ROOT
 
 mkdir -p $RPM_BUILD_ROOT/opt/analytics/
-cp -r analytics migrations misc server.py $RPM_BUILD_ROOT/opt/analyics/
+cp -r analytics migrations misc server.py $RPM_BUILD_ROOT/opt/analytics/
 
 mkdir $RPM_BUILD_ROOT/opt/analytics/etc
 cp etc/analytics.cfg.example $RPM_BUILD_ROOT/opt/analytics/etc/analytics.cfg.example
