@@ -1,0 +1,16 @@
+#-*- coding:utf-8 -*-
+SQL_UP = u"""
+CREATE TABLE devices (
+    uid VARCHAR(255) NOT NULL,
+    model VARCHAR(255) DEFAULT NULL,
+    build VARCHAR(255) DEFAULT  NULL,
+    system VARCHAR(255) DEFAULT NULL,
+    kernel VARCHAR(255) DEFAULT NULL,
+    stored INT(11) DEFAULT NULL,
+    PRIMARY KEY (uid)
+) ENGINE=InnoDB CHARACTER SET=utf8;
+"""
+
+SQL_DOWN = u"""
+DROP TABLE devices;
+"""

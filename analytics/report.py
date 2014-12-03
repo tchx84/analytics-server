@@ -24,6 +24,7 @@ class Report(object):
         ''' convert from transport format to SQL format '''
         now = int(time.time())
         times = []
+        devices = []
 
         user = data[0]
         entries = data[1]
@@ -31,4 +32,7 @@ class Report(object):
             for entry in entries[package]:
                 times.append([user] + [package] + entry + [now])
 
-        return times
+        if data[2]:
+            devices.append([user] + data[2] + [now])
+
+        return times, devices
