@@ -29,6 +29,16 @@ class DataStore(object):
                   'duration = VALUES(duration), '\
                   'stored = VALUES(stored)'
 
+    QUERY_DEVICES = 'INSERT INTO devices '\
+                    '(uid, model, build, system, kernel, stored) '\
+                    'values (%s, %s, %s, %s, %s, %s) '\
+                    'ON DUPLICATE KEY UPDATE '\
+                    'model = VALUES(model), '\
+                    'build = VALUES(build), '\
+                    'system = VALUES(system), '\
+                    'kernel = VALUES(kernel), '\
+                    'stored = VALUES(stored)'
+
     def __init__(self, host, port, username, password, database):
         self._connection = MySQLdb.connect(host=host,
                                            port=port,
@@ -37,8 +47,9 @@ class DataStore(object):
                                            db=database)
 
     def store(self, data):
-        times = Report.parse(data)
-        self._execute_write([(self.QUERY_TIMES, times)])
+        times, devices = Report.parse(data)
+        self._execute_write([(self.QUERY_TIMES, times),
+                             (self.QUERY_DEVICES, devices)])
 
     def _execute_write(self, queries):
         self._connection.ping(True)
