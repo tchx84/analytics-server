@@ -83,6 +83,7 @@ db-migrate
 /opt/analytics/etc/analytics.cfg.example
 /opt/analytics/migrations/20141014092823_create_table_times.migration
 /opt/analytics/migrations/20141203105300_create_table_devices.migration
+/opt/analytics/migrations/20150115081700_create_table_traffic.migration
 /opt/analytics/migrations/simple-db-migrate.conf
 /opt/analytics/misc/generate.sh
 /opt/analytics/misc/init.sql

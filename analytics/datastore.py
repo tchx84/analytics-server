@@ -29,6 +29,14 @@ class DataStore(object):
                   'duration = VALUES(duration), '\
                   'stored = VALUES(stored)'
 
+    QUERY_TRAFFIC = 'INSERT INTO traffic '\
+                    '(uid, started, received, transmitted, stored) '\
+                    'values (%s, %s, %s, %s, %s) '\
+                    'ON DUPLICATE KEY UPDATE '\
+                    'received = VALUES(received), '\
+                    'transmitted = VALUES(transmitted), '\
+                    'stored = VALUES(stored)'
+
     QUERY_DEVICES = 'INSERT INTO devices '\
                     '(uid, model, build, system, kernel, stored) '\
                     'values (%s, %s, %s, %s, %s, %s) '\
@@ -47,8 +55,9 @@ class DataStore(object):
                                            db=database)
 
     def store(self, data):
-        times, devices = Report.parse(data)
+        times, traffic, devices = Report.parse(data)
         self._execute_write([(self.QUERY_TIMES, times),
+                             (self.QUERY_TRAFFIC, traffic),
                              (self.QUERY_DEVICES, devices)])
 
     def _execute_write(self, queries):

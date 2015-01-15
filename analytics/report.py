@@ -19,20 +19,29 @@ import time
 
 class Report(object):
 
+    USER = 0
+    TIMES = 1
+    TRAFFIC = 2
+    DEVICE = 3
+
     @staticmethod
     def parse(data):
         ''' convert from transport format to SQL format '''
         now = int(time.time())
         times = []
+        traffic = []
         devices = []
 
-        user = data[0]
-        entries = data[1]
+        user = data[Report.USER]
+        entries = data[Report.TIMES]
         for package in entries.keys():
             for entry in entries[package]:
                 times.append([user] + [package] + entry + [now])
 
-        if data[2]:
-            devices.append([user] + data[2] + [now])
+        for entry in data[Report.TRAFFIC]:
+            traffic.append([user] + entry + [now])
 
-        return times, devices
+        if data[Report.DEVICE]:
+            devices.append([user] + data[Report.DEVICE] + [now])
+
+        return times, traffic, devices
