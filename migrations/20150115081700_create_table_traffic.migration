@@ -1,0 +1,15 @@
+#-*- coding:utf-8 -*-
+SQL_UP = u"""
+CREATE TABLE traffic (
+    uid VARCHAR(255) NOT NULL,
+    started INT(11) NOT NULL,
+    received BIGINT DEFAULT NULL,
+    transmitted BIGINT DEFAULT NULL,
+    stored INT(11) DEFAULT NULL,
+    PRIMARY KEY (uid, started)
+) ENGINE=InnoDB CHARACTER SET=utf8;
+"""
+
+SQL_DOWN = u"""
+DROP TABLE traffic;
+"""
