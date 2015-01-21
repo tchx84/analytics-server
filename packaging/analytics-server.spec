@@ -1,5 +1,5 @@
 Name:           analytics-server
-Version:        0.1.0
+Version:        0.1.30
 Release:        1
 Summary:        Server for the XoAnalytics Android tool
 
